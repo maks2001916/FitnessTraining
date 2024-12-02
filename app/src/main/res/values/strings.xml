@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Fitness training</string>
+    <string name="slogan">У тебя получится!</string>
+    <string name="go">Переход к тренировке</string>
+</resources>
