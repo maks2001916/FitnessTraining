@@ -7,5 +7,6 @@
     <string name="exercise">Упражнение</string>
     <string name="time">Время</string>
     <string name="next">Продолжить дальше</string>
+    <string name="exit">Выход</string>
 
 </resources>
