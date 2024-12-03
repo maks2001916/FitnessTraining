@@ -2,4 +2,10 @@
     <string name="app_name">Fitness training</string>
     <string name="slogan">У тебя получится!</string>
     <string name="go">Переход к тренировке</string>
+    <string name="heading">Тренировка</string>
+    <string name="startExercise">Начать тренировку</string>
+    <string name="exercise">Упражнение</string>
+    <string name="time">Время</string>
+    <string name="next">Продолжить дальше</string>
+
 </resources>
