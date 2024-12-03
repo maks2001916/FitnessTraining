@@ -1,6 +1,8 @@
 package com.example.fitnesstraining
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -13,6 +15,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 
 class MainActivity : AppCompatActivity() {
+
+    private var GALLERY_REQUEST = 302
+    var photoUri: Uri? = null
 
     private lateinit var toolbarTB: Toolbar
     private lateinit var coachingNameET: EditText
@@ -34,6 +39,11 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbarTB)
 
+        imageIV.setOnClickListener {
+            val photoPickerIntent = Intent(Intent.ACTION_PICK)
+            photoPickerIntent.type = "image/*"
+            startActivityForResult(photoPickerIntent, GALLERY_REQUEST)
+        }
     }
 
 
@@ -45,5 +55,13 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {R.id.exit -> finish() }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == GALLERY_REQUEST && resultCode == RESULT_OK) {
+            photoUri = data?.data
+            imageIV.setImageURI(photoUri)
+        }
     }
 }
