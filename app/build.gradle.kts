@@ -43,7 +43,8 @@ dependencies {
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     implementation(libs.circleimageview)
-    implementation(libs.gifimageview)
+    //implementation(libs.gifimageview)
+    implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.19")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

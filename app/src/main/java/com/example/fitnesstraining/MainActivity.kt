@@ -10,14 +10,12 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 
 class MainActivity : AppCompatActivity() {
-
-    private var GALLERY_REQUEST = 302
-    var photoUri: Uri? = null
 
     private lateinit var toolbarTB: Toolbar
     private lateinit var coachingNameET: EditText
@@ -39,13 +37,28 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(toolbarTB)
 
-        imageIV.setOnClickListener {
-            val photoPickerIntent = Intent(Intent.ACTION_PICK)
-            photoPickerIntent.type = "image/*"
-            startActivityForResult(photoPickerIntent, GALLERY_REQUEST)
+        startBTN.setOnClickListener {
+            if (checkFieldsIsNotEmpty()) {
+                var intent = Intent(this, ExerciseActivity::class.java)
+                intent.putExtra("name", coachingNameET.text.toString())
+                startActivity(intent)
+            } else {
+                Toast.makeText(
+                    applicationContext,
+                    getString(R.string.notAllFieldsAreFilledIn),
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
     }
 
+    fun checkFieldsIsNotEmpty(): Boolean {
+        if (coachingNameET.text.isNotEmpty() &&
+            imageIV.toString().isNotEmpty()) {
+            return true
+        }
+        return false
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -57,11 +70,4 @@ class MainActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == GALLERY_REQUEST && resultCode == RESULT_OK) {
-            photoUri = data?.data
-            imageIV.setImageURI(photoUri)
-        }
-    }
 }
