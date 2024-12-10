@@ -6,4 +6,6 @@ class Exercise(
     val durationInSeconds: Int,
     val gifImage: Int
 ) {
+
+
 }
