@@ -109,7 +109,7 @@ class ExerciseActivity : AppCompatActivity() {
 
     private fun init() {
         toolbarTB = findViewById(R.id.toolbarExerciseTB)
-        coachingNameTV = findViewById(R.id.coachingNameET)
+        coachingNameTV = findViewById(R.id.headingTV)
         startBTN = findViewById(R.id.startBTN)
         exerciseTV = findViewById(R.id.exerciseTV)
         descriptionTV = findViewById(R.id.descriptionTV)

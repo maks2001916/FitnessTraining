@@ -33,13 +33,13 @@ class MainActivity : AppCompatActivity() {
         coachingNameET = findViewById(R.id.coachingNameET)
         imageIV = findViewById(R.id.imageInfoIV)
         sloganTV = findViewById(R.id.sloganTV)
-        startBTN = findViewById(R.id.startBTN)
+        startBTN = findViewById(R.id.startExerciseBTN)
 
         setSupportActionBar(toolbarTB)
 
         startBTN.setOnClickListener {
             if (checkFieldsIsNotEmpty()) {
-                var intent = Intent(this, ExerciseActivity::class.java)
+                val intent = Intent(this, ExerciseActivity::class.java)
                 intent.putExtra("name", coachingNameET.text.toString())
                 startActivity(intent)
             } else {
@@ -53,8 +53,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun checkFieldsIsNotEmpty(): Boolean {
-        if (coachingNameET.text.isNotEmpty() &&
-            imageIV.toString().isNotEmpty()) {
+        if (coachingNameET.text.isNotEmpty()) {
             return true
         }
         return false
